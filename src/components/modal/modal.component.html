@@ -1,0 +1,41 @@
+<div class="modal-container" (click)="dismissModal()" aria-modal="true" role="dialog" tabindex="-1">
+  <div class="modal" (click)="modalClick($event)" *ngIf="offer">
+    
+    <header>
+      <h1>Offer Details</h1>
+      <button (click)="dismissModal()" aria-label="Close">
+        <span aria-hidden="true">&#10006;</span>
+      </button>
+    </header>
+
+    <div class="content">
+        <div class="banner">
+          <img src="{{'../assets/' + offer.image}}" alt="Offer Image">
+        </div>
+        <div class="section">
+          <div class="offer-tag"  [ngClass]="tagClass">
+            {{offer.tag}}
+          </div>
+          <h2>{{offer.name}}</h2>
+          <div class="brand-row">
+            <img  src="{{'../assets/' + offer.logo}}" alt="Brand label">
+            <p>{{offer.brand}}</p>
+          </div>
+          <div class="description">
+            <p>{{offer.description}}</p>
+          </div>
+        </div>
+    </div>    
+
+    <div class="bottom-btn-container">
+      <button (click)="onSelected()" class="secondary select" 
+      *ngIf="!isSelected" [disabled]="numSelected >= offerLimit">
+        Select Offer
+      </button>
+      <button (click)="onDeselect()" class="secondary deselect" *ngIf="isSelected">
+        Deselect Offer
+      </button>
+    </div>
+    
+  </div>
+</div>

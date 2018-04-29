@@ -1,0 +1,85 @@
+@import '../../theme/mixins.scss';
+@import '../../theme/variables.scss';
+
+.progress-bar{
+  position:relative;
+  background-color:$backgroundGrey;
+  padding:10px 30px 15px;
+
+    .bar-transition{
+      position:absolute;
+      width: calc(100% - 90px);
+      left:45px;
+      height:10px;
+      top:16px;
+      z-index: 1;
+    }
+  
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .bar-item{
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      .number{
+        height:24px;
+        width:24px;
+        border-radius:50%;
+        background:white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+        font-size:12px;
+      }
+      
+      .label{
+        padding-top:10px;
+        font-size:14px;
+      }
+            
+      &.is-active{
+        .number{
+          background:$blue;
+          color:white;
+        }
+        .label{
+          color:$blue;
+        }
+        
+      }
+      &.is-done {
+        .number{
+          display: none;
+        }
+        .label{
+          color:$green;
+        }
+        .icon-wrapper{
+          background:white;
+          border-radius:50%;
+          z-index:5;
+          .icon{
+            height:24px;
+            width:24px;
+            background-image: url("../../assets/icons/icon_check.png");
+          }
+        }
+      }
+
+      &.is-disable{
+        .number{
+          background:$grey;
+          color:white;
+        }        
+        .label{
+          color:$textLightGrey;
+        }
+      }
+      
+    }
+}

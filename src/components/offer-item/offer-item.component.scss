@@ -1,0 +1,72 @@
+@import '../../theme/mixins.scss';
+@import '../../theme/variables.scss';
+.offer-container{
+  position:relative;
+  height:250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background:white;
+  border:1px solid $grey;
+  border-radius:5px;
+  padding:0 15px;
+  margin:8px;
+  cursor:pointer;
+  transition: box-shadow 0.25s;
+  box-shadow:0;
+  @include hover-state{
+    border-color:$green;
+    box-shadow:$green  0px 0px 5px 1px;    
+  }
+
+  &.selected{
+    border-color:$green;
+    box-shadow:$green  0px 0px 5px 1px;
+    .controls-row .checkmark{
+      opacity:1;
+    }
+  }
+
+  .controls-row{
+    width:100%;
+    position:relative;
+    height:20px;
+    .checkmark{
+      opacity:0;
+      transition: opacity 0.25s;
+    }
+    .info{
+      position:absolute;
+      right:0;
+      top:0;
+      color:white;
+      background:$grey;
+      border:0;
+      border-radius:50%;
+      height:20px;
+      width:20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor:pointer;
+    }
+  }
+  >img{
+    max-width:100%;
+    max-height:110px;
+    height:auto;
+  }
+  .row{
+    width:100%;
+  }
+  
+  h3{
+    margin:0;
+    text-align: left;
+    width:100%;
+    font-size:16px;
+    color:$textGrey;
+    height:40px;
+  }
+}

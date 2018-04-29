@@ -1,0 +1,133 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'mixins.scss';
+@import 'variables.scss';
+body{
+  margin:0;
+  font-family:Droid Sans;
+  header{
+    background:$lightBlue;
+    padding:15px 20px;
+    h1{
+      color:white;
+      margin:0;
+      font-size:16px;
+      font-weight: normal;
+    }
+  }
+}
+
+//global widgets
+.offer-tag{
+  display:inline-block;
+  border:1px solid black;
+  border-radius:2px;
+  text-transform: uppercase;
+  font-weight:bold;
+  font-size:11px;
+  padding:3px 0;
+  width:77px;
+  text-align: center;
+  &.light-blue{
+    color:$tagLightBlue;
+    border-color:$tagLightBlue;
+    background-color:$tagLightBlueBg;
+  }
+  &.dark-blue{
+    color:$tagDarkBlue;
+    border-color:$tagDarkBlue;
+    background-color:$tagDarkBlueBg;
+  }
+  &.green{
+    color:$tagGreen;
+    border-color:$tagGreen;
+    background-color:$tagGreenBg;
+  }
+  &.purple{
+    color:$tagPurple;
+    border-color:$tagPurple;
+    background-color:$tagPurpleBg;
+  }
+}
+
+.bottom-btn-container{
+  padding: 15px 25px;
+  background-color:$backgroundGrey;
+  @include desktop{
+    padding: 10px 15px;
+  }
+  >button{
+    color:white;
+    background-color:$grey;
+    border:0;
+    display:block;
+    width:100%;
+    padding:20px;
+    border-radius:5px;
+    font-size:16px;
+    font-weight:bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon{
+      display:none;
+      margin-right:10px;
+      height:15px;
+      width:15px;
+    }
+    @include desktop{
+      width:auto;
+      float:right;
+    }
+    &:not([disabled]){
+      background-color:$green;
+      @include hover-state{
+        background-color:$lightGreen;
+      }
+      .icon{
+        display:block;
+      }
+      &.secondary{
+        background-color:$blue;
+        @include hover-state{
+          background-color:$lightBlue;
+        } 
+      }
+    }
+  }
+}
+.alert-window{
+  position:absolute;
+  right:0;
+  bottom:120px;
+  transform:translateX( calc(100%) );
+  transition: transform 0.25s;
+  background:$offWhite;
+  padding:5px 10px;
+  border:2px solid $borderGrey;
+  border-radius:2px;
+  display: flex;
+  justify-content: space-between;
+  button{
+    background:transparent;
+    border:0;
+    color:$grey;
+    cursor: pointer;
+    margin-left:10px;
+  }
+  &.show{
+    left:initial;
+    transform:translateX(-20px);
+  }
+} 
+
+//accessibilty
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}

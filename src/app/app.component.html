@@ -1,20 +1,61 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+<div class="app-container">
+
+  <div class="app-content">
+    <header>
+      <h1>BabyFirst</h1>
+    </header>
+    <app-progress-bar
+     [progressOptions]="progressOptions"
+     [progress]="progress">
+    </app-progress-bar>
+    <div class="offer-container">
+      <h2>Pick your offers</h2>
+      <div class="grid">
+        <div class="offer-wrapper" *ngFor="let offer of currentOffers">
+          <app-offer-item 
+          [offer]="offer" 
+          [isSelected]="selection[offer.id]"
+          (selected)="onSelected($event)"
+          (viewInfo)="toggleModal($event)">
+        </app-offer-item>
+        </div>  
+      </div>
+
+    </div>
+    <footer>
+      <div class="footer-banner">
+        <img src="assets/logos/img_publisher_logo.png" alt="Baby First">
+        <a href="#">
+          <img src="assets/logos/facebook.PNG" alt="Facebook">
+        </a>
+        
+      </div>
+      
+      <ul>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">My Account</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </footer>
+  </div>
+  <div class="bottom-btn-container">
+    <button [disabled]="offersSelected < offerLimit" (click)="onComplete()">
+      <img class="icon" src="assets/icons/icon_check_inv.svg" alt="Checked">
+      {{offersSelected}} of 5 offers selected
+    </button>
+  </div>
+  <app-modal  
+    [class.show]="showModal" (toggleModal)="toggleModal($event)"
+    [offer]="modalOffer" [selection]="selection" (selected)="onSelected($event)">
+  </app-modal>
+  <div class="alert-window" [class.show]="showAlert">
+    Maximum offers has been reached
+    <button (click)="dismissAlert()" tabindex="-1">&#10006;<span class="sr-only">close alert</span>
+    </button>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 

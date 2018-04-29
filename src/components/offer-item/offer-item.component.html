@@ -1,0 +1,14 @@
+<div class="offer-container" [class.selected]="isSelected" (click)="onClick($event)" tabindex="0" (keyup.enter)="onClick($event)">
+  <div class="controls-row">
+      <img class="checkmark" src="../assets/icons/icon_check.svg" alt="Selected">  
+      <button class="info" (click)="onInfo($event); false">
+        i
+      </button>
+      
+  </div>
+  <img src="{{'../assets/' + offer.image}}" alt="Offer Avatar">
+  <div class="row">
+    <div class="offer-tag"  [ngClass]="tagClass" >{{offer.tag}}</div>
+  </div>
+  <h3>{{offer.name}}</h3>
+</div>

@@ -1,0 +1,102 @@
+@import '../../theme/mixins.scss';
+@import '../../theme/variables.scss';
+:host{
+  display:block;
+  position:absolute;
+  top:100vh;
+  width:100vw;
+  height:100vh;
+  transition: top 0.25s;
+  z-index: 10;
+
+  &.show{
+    top:0;
+    .modal-container{
+      opacity:1;
+    }
+  }
+
+  .modal-container{
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+    opacity:0;
+    transition: opacity 0.25s;
+    @include desktop{
+      transition: opacity 500ms cubic-bezier(1.000, 0.010, 0.540, 0.895); 
+    }
+
+    .modal{
+      background:white;
+      width:100%;
+      height:100%;
+      display:flex;
+      flex-direction: column;
+
+      @include desktop{
+        width:$tablet-width;
+        margin:auto;
+        height:auto;
+        min-height:250px;
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%, -50%);
+      }
+
+      //modal content
+      header{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        >button{
+          color:white;
+          background:transparent;
+          border:0;
+          cursor: pointer;
+          font-size:20px;
+        }
+      }
+      
+      .content{
+        flex-grow:1;
+        overflow:auto;
+        
+        display:flex;
+        flex-direction: column;
+        .banner{
+          background:white;
+          text-align: center;
+          padding:20px 0;
+          >img{
+            height:150px;
+            margin:auto;
+          }
+        }
+        .section{
+          background-color:$offWhite;
+          @include side-padding;
+          padding-top:20px;
+          padding-bottom:20px;
+          flex-grow:1;
+          h2{
+            color:$textGrey;
+          }
+          .brand-row{
+            display:flex;
+            align-items: center;  
+            >img{
+              margin-right:10px;
+            }
+          }
+          .description{
+            border-top:2px solid $borderGrey;
+            margin-top:10px;
+            line-height:1.5;
+          }
+        }
+
+      }
+    }
+  }
+}

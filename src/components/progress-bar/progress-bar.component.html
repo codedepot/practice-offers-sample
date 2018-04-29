@@ -1,0 +1,23 @@
+<div class="bar-container">
+    <div class="progress-bar" >
+        <div class="bar-transition"
+          [attr.style]="gradientValue"></div>
+        <div class="bar-item" 
+          *ngFor="let progItem of progressOptions; let i = index"
+          [class.is-done]="progress >i" [class.is-active]="progress ===i"
+          [class.is-disable]="progress < i">
+            <div class="number">
+              {{i+1}}
+            </div>
+            <div class="icon-wrapper">
+              <div class="icon">
+
+              </div>
+            </div>
+            <div class="label">
+              {{progItem}}
+            </div>
+        </div>
+    
+      </div>
+</div>

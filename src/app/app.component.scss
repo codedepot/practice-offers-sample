@@ -1,0 +1,66 @@
+@import '../theme/mixins.scss';
+@import '../theme/variables.scss';
+.app-container{
+  width:100vw;
+  height:100vh;
+  position:relative;
+  display:flex;
+  flex-direction: column;
+  overflow:hidden;
+  .app-content{
+    flex-grow:1;
+    overflow-y: auto;
+
+    .offer-container{
+      background-color:$offWhite;
+      padding:0 8px;
+      >h2{
+        margin:0;
+        padding: 40px 0 30px;
+        color:$textGrey;
+        text-align: center;
+      }
+      .grid{
+        display:flex;
+        flex-wrap:wrap;
+        padding-bottom:35px;
+        .offer-wrapper{
+          width:50%;
+          @include tablet{
+            width:33.33%;
+          }
+          @include desktop{
+            width:25%;
+          }
+        }
+      }
+
+    }
+  }
+
+  footer{
+    @include side-padding;
+    .footer-banner{
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      margin:30px 0 50px;
+    }
+    ul{
+      list-style-type: none;
+      margin:0;
+      padding:0;
+      column-count: 2;
+      column-gap: 20px;
+      li {
+        margin-bottom:20px;
+        a{
+          color:$textGrey;
+          text-decoration: none;
+          
+        }
+      
+      }
+    }
+  }
+}

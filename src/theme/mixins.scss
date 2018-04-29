@@ -1,0 +1,40 @@
+//mixins variable
+$tablet-width: 768px;
+$desktop-width: 1024px;
+@mixin mobile {
+  @media screen and  (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media screen and (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+
+@mixin hover-state {
+  &:hover, &:active, &:focus {
+      @content;
+  }
+}
+@mixin side-padding{
+  padding-left:25px;
+  padding-right:25px;
+}
+@mixin padding{
+  padding:25px;
+}
